@@ -51,14 +51,14 @@
                         <tr>
                             <td>{{ $recette->date }}</td>
                             <td>{{ $recette->description }}</td>
-                            <td>{{ number_format($recette->montant, 2) }} €</td>
+                            <td>{{ number_format($recette->montant, 2) }} Fcfa</td>
                         </tr>
                     @endforeach
                 </tbody>
                   <tfoot>
                     <tr>
                         <td colspan="2" class="text-end"><strong>Total du mois:</strong></td>
-                       <td><strong>{{ number_format($totalParMois, 2) }} €</strong></td>
+                       <td><strong>{{ number_format($totalParMois, 2) }} Fcfa</strong></td>
                     </tr>
                 </tfoot>
             </table>
@@ -67,7 +67,7 @@
         @endif
 
           <div class="mt-4">
-                <p><strong>Total des recettes :</strong> {{ number_format($totalRecettes, 2) }} €</p>
+                <p><strong>Total des recettes :</strong> {{ number_format($totalRecettes, 2) }} Fcfa</p>
           </div>
         {{ $recettes->appends(request()->query())->links() }}
          <a href="{{ route('dashboard.index') }}" class="btn btn-secondary">Retour au dashboard</a>

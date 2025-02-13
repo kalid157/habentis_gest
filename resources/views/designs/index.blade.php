@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Manage Employees</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-</head>
+<x-head/>
 <body>
 
     <div class="container-fluid ">
@@ -36,26 +27,26 @@
     <div class="container-fluid">
         <div class="card">
 
-            <x-header data="LE STAFF"/>
+            <x-header data="APPRENANTS UI/UX DESIGN"/>
             
             <div class="card-body">
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
 
-                <table class="table">
+                <table class="" id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                         <tr>
-                            <th><input type="checkbox" id="selectAll"></th>
-                            <th>Name</th>
-                            <th>Surname</th>
-                            <th>Email</th>
-                            <th>Address</th>
-                            <th>Phone</th>
-                            <th>Formation</th>
-                            <th>Session</th>
-                            <th>Montant</th>
-                            <th>Actions</th>
+                            <th data-priority><input type="checkbox" id="selectAll"></th>
+                            <th data-priority>Name</th>
+                            <th data-priority>Surname</th>
+                            <th data-priority>Email</th>
+                            <th data-priority>Address</th>
+                            <th data-priority>Phone</th>
+                            <th data-priority>Formation</th>
+                            <th data-priority>Session</th>
+                            <th data-priority>Montant</th>
+                            <th data-priority>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -205,60 +196,8 @@
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Edit functionality
-        document.querySelectorAll('.edit-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const id = this.dataset.id;
-                const form = document.getElementById('editForm');
-                form.action = `/designs/${id}`;
-                
-                document.getElementById('editName').value = this.dataset.name;
-                document.getElementById('editSurname').value = this.dataset.surname;
-                document.getElementById('editEmail').value = this.dataset.email;
-                document.getElementById('editAddress').value = this.dataset.address;
-                document.getElementById('editPhone').value = this.dataset.phone;
-                document.getElementById('editFormation').value = this.dataset.formation;
-                document.getElementById('editSession').value = this.dataset.session;
-                document.getElementById('editMontant').value = this.dataset.montant;
-            });
-        });
-
-        // Select all functionality
-        document.getElementById('selectAll').addEventListener('change', function() {
-            document.querySelectorAll('.employee-checkbox').forEach(checkbox => {
-                checkbox.checked = this.checked;
-            });
-        });
-
-        // Bulk delete
-        document.getElementById('deleteSelected').addEventListener('click', function() {
-            const selectedIds = Array.from(document.querySelectorAll('.employee-checkbox:checked'))
-                .map(checkbox => checkbox.value);
-            
-            if (selectedIds.length === 0) {
-                alert('Please select employees to delete');
-                return;
-            }
-
-            if (confirm('Are you sure you want to delete selected employees?')) {
-                const form = document.createElement('form');
-                form.method = 'POST';
-                form.action = '{{ route("employees.destroy", ":id") }}'.replace(':id', selectedIds.join(','));
-                form.innerHTML = `
-                    @csrf
-                    @method('DELETE')
-                    <input type="hidden" name="ids" value="${selectedIds.join(',')}">
-                `;
-                document.body.appendChild(form);
-                form.submit();
-            }
-        });
-    </script>
-
-        <!--<script src="{{ asset('js/employee_form.js') }}"></script> -->
+    <x-design/>
+    
      
 </body>
 </html>

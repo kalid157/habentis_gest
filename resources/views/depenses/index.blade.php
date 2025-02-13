@@ -52,7 +52,7 @@
                         <tr>
                             <td>{{ $depense->date }}</td>
                             <td>{{ $depense->description }}</td>
-                            <td>{{ number_format($depense->montant, 2) }} €</td>
+                            <td>{{ number_format($depense->montant, 2) }} Fcfa</td>
                             <td>
                        <a href="{{ route('depenses.show', $depense) }}" class="btn btn-sm btn-info">View</a>
                        <a href="{{ route('depenses.edit', $depense) }}" class="btn btn-sm btn-primary">Edit</a>
@@ -69,7 +69,7 @@
                  <tfoot>
                     <tr>
                         <td colspan="2" class="text-end"><strong>Total du mois:</strong></td>
-                       <td><strong>{{ number_format($totalParMois, 2) }} €</strong></td>
+                       <td><strong>{{ number_format($totalParMois, 2) }} Fcfa</strong></td>
                     </tr>
                 </tfoot>
              </table>
@@ -77,7 +77,7 @@
              <p>Aucune dépense pour ce mois.</p>
          @endif
           <div class="mt-4">
-                <p><strong>Total des dépenses :</strong> {{ number_format($totalDepenses, 2) }} €</p>
+                <p><strong>Total des dépenses :</strong> {{ number_format($totalDepenses, 2) }} Fcfa</p>
             </div>
           {{ $depenses->appends(request()->query())->links() }}
         <a href="{{ route('dashboard.index') }}" class="btn btn-secondary">Retour au dashboard</a>

@@ -15,4 +15,9 @@ class Formation extends Model
     {
         return $this->hasMany(Apprenant::class);
     }
+
+    public function sectionGroups()
+    {
+        return $this->hasMany(SectionGroup::class);
+    }
 }

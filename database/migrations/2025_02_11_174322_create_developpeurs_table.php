@@ -20,11 +20,11 @@ return new class extends Migration
             $table->string('phone');
             $table->string('formation');
             $table->string('session');
+            $table->integer('tranche1');           
+            $table->integer('tranche2');           
+            $table->integer('tranche3');           
+            $table->integer('tranche4');           
             $table->integer('montant');           
-            $table->integer('montant1');           
-            $table->integer('montant2');           
-            $table->integer('montant3');           
-            $table->integer('montantrestant');           
             $table->timestamps();
         });
     }

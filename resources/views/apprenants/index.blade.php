@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Manage Employees</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-</head>
+<x-head/>
 <body>
-
+    
     <div class="container-fluid ">
       <div class="row">
         <div class="col-sm"> 
@@ -33,37 +24,26 @@
       </div>
     </div> 
     
-    <div class="container-fluid">
-        <div class="card">
-
-        <div class="card-header bg-primary text-white  d-flex justify-content-between align-items-end">
-                <h2>Data analyst</h2>
-                <div class="">
-                    <button type="button" class="btn btn-danger" id="deleteSelected">Delete</button>
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">
-                        Add New Employee
-                    </button>
-                </div>
-            </div>
+    <x-header data="APPRENANTS DATA ANALYST"/>
             
             <div class="card-body">
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
 
-                <table class="table">
+                <table  id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                         <tr>
-                            <th><input type="checkbox" id="selectAll"></th>
-                            <th>Name</th>
-                            <th>Surame</th>
-                            <th>Email</th>
-                            <th>Address</th>
-                            <th>Phone</th>
-                            <th>Formation</th>
-                            <th>Session</th>
-                            <th>Montant</th>
-                            <th>Actions</th>
+                            <th data-priority><input type="checkbox" id="selectAll"></th>
+                            <th data-priority>Name</th>
+                            <th data-priority>Surame</th>
+                            <th data-priority>Email</th>
+                            <th data-priority>Address</th>
+                            <th data-priority>Phone</th>
+                            <th data-priority>Formation</th>
+                            <th data-priority>Session</th>
+                            <th data-priority>Montant</th>
+                            <th data-priority>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -214,6 +194,23 @@
             </div>
         </div>
     </div>
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
+    <script src="/DataTables/datatables.js"></script>
+    <!--Datatables -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var table = $('#example').DataTable({
+            responsive: true,
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/1.12.0/i18n/fr-FR.json'
+            }
+        }).columns.adjust().responsive.recalc();
+    });
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
