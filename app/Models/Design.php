@@ -18,6 +18,11 @@ class Design extends Model
         'phone',
         'formation',
         'session',
-        'montant'
+        'tranche1',
+        'tranche2',
+        'tranche3',
+        'tranche4',
+        'montant',
+        'montantrestant'
     ];
 }

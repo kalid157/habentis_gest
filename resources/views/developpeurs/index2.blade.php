@@ -1,18 +1,18 @@
 <x-head/>
 <body>
-    
+
     <div class="container-fluid ">
       <div class="row">
         <div class="col-sm"> 
       
-        <x-adminlte-small-box title="{{$dataCount}}" text="User Registrations" icon="fas fa-user-plus text-teal"
+        <x-adminlte-small-box title="{{ $totalDev }}" text="User Registrations" icon="fas fa-user-plus text-teal"
          
             theme="primary" url="#" url-text="View all users"/>
 
         </div>
 
         <div class="col-sm">
-        <x-adminlte-small-box title="424" text="Views" icon="fas fa-eye text-dark"
+        <x-adminlte-small-box title="{{$totalMontant}} Fcfa" text="Views" icon="fas fa-eye text-dark"
         theme="teal" url="#" url-text="View details"/>
         </div>
 
@@ -22,21 +22,24 @@
         </div>
         
       </div>
-    </div> 
+    </div>  
     
-    <x-header data="APPRENANTS DATA ANALYST"/>
-            
-            <div class="card-body">
+    
+    <x-header data="APPRENANTS DEVELOPPEUR"/>
+        <div class="card-body">
+
+        <div class="card-body">
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
-
+            
+            
                 <table  id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                         <tr>
                             <th data-priority><input type="checkbox" id="selectAll"></th>
                             <th data-priority>Name</th>
-                            <th data-priority>Surame</th>
+                            <th data-priority>Surname</th>
                             <th data-priority>Email</th>
                             <th data-priority>Address</th>
                             <th data-priority>Phone</th>
@@ -46,50 +49,51 @@
                             <th data-priority>Tranche2</th>
                             <th data-priority>Tranche3</th>
                             <th data-priority>Tranche4</th>
-                            <th data-priority>Montant</th>
+                            <th data-priority>Montant A Payer</th>
                             <th data-priority>Reste A Payer</th>
                             <th data-priority>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($apprenants as $apprenant)
+                        @foreach($developpeurs as $developpeur)
                         <tr>
-                            <td><input type="checkbox" class="employee-checkbox" value="{{ $apprenant->id }}"></td>
-                            <td>{{ $apprenant->name }}</td>
-                            <td>{{ $apprenant->surname }}</td>
-                            <td>{{ $apprenant->email }}</td>
-                            <td>{{ $apprenant->address }}</td>
-                            <td>{{ $apprenant->phone }}</td>
-                            <td>{{ $apprenant->formation }}</td>
-                            <td>{{ $apprenant->session }}</td>
-                            <td>{{ $apprenant->tranche1 }}</td>
-                            <td>{{ $apprenant->tranche2 }}</td>
-                            <td>{{ $apprenant->tranche3 }}</td>
-                            <td>{{ $apprenant->tranche4 }}</td>
-                            <td>{{ $apprenant->montant }}</td>
-                            <td>{{ $apprenant->montantrestant }}</td>
+                            <td><input type="checkbox" class="employee-checkbox" value="{{ $developpeur->id }}"></td>
+                            <td>{{ $developpeur->name }}</td>
+                            <td>{{ $developpeur->surname }}</td>
+                            <td>{{ $developpeur->email }}</td>
+                            <td>{{ $developpeur->address }}</td>
+                            <td>{{ $developpeur->phone }}</td>
+                            <td>{{ $developpeur->formation }}</td>
+                            <td>{{ $developpeur->session }}</td>
+                            <td>{{ $developpeur->tranche1 }}</td>
+                            <td>{{ $developpeur->tranche2 }}</td>
+                            <td>{{ $developpeur->tranche3 }}</td>
+                            <td>{{ $developpeur->tranche4 }}</td>
+                            <td>{{ $developpeur->montant }}</td>
+                            <td>{{ $developpeur->montantrestant }}</td> <!-- Montant restant -->
+                            <td>
+                            
                             <td>
                                 <button class="btn btn-sm btn-warning edit-btn" 
-                                    data-id="{{ $apprenant->id }}"
-                                    data-name="{{ $apprenant->name }}"
-                                    data-surname="{{ $apprenant->surname }}"
-                                    data-email="{{ $apprenant->email }}"
-                                    data-address="{{ $apprenant->address }}"
-                                    data-phone="{{ $apprenant->phone }}"
-                                    data-formation="{{ $apprenant->formation }}"
-                                    data-session="{{ $apprenant->session }}"
-                                    data-tranche1="{{ $apprenant->tranche1 }}"
-                                    data-tranche2="{{ $apprenant->tranche2 }}"
-                                    data-tranche3="{{ $apprenant->tranche3 }}"
-                                    data-tranche4="{{ $apprenant->tranche4 }}"
-                                    data-montant="{{ $apprenant->montant }}"
-                                    data-montantrestant="{{ $apprenant->montantrestant }}"
+                                    data-id="{{ $developpeur->id }}"
+                                    data-name="{{ $developpeur->name }}"
+                                    data-surname="{{ $developpeur->surname }}"
+                                    data-email="{{ $developpeur->email }}"
+                                    data-address="{{ $developpeur->address }}"
+                                    data-phone="{{ $developpeur->phone }}"
+                                    data-formation="{{ $developpeur->formation }}"
+                                    data-session="{{ $developpeur->session }}"
+                                    data-tranche1="{{ $developpeur->tranche1 }}"
+                                    data-tranche2="{{ $developpeur->tranche2 }}"
+                                    data-tranche3="{{ $developpeur->tranche3 }}"
+                                    data-tranche4="{{ $developpeur->tranche4 }}"
+                                    data-montant="{{ $developpeur->montant }}"
+                                    data-montantrestant="{{ $developpeur->montantrestant }}"
                                     data-bs-toggle="modal" 
                                     data-bs-target="#editModal">
-                                   <i class="fas fa-edit"> Edit</i>
-                                    
+                                    <i class="fas fa-edit"> Edit</i>
                                 </button>
-                                <form action="{{ route('apprenants.destroy', $apprenant->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('developpeurs.destroy', $developpeur->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger">Delete</button>
@@ -103,15 +107,15 @@
         </div>
     </div>
 
-    <!-- Add Modal -->
-    <div class="modal fade" id="addModal" tabindex="-1">
+     <!-- Add Modal -->
+     <div class="modal fade" id="addModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Add New Employee</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <form action="{{ route('apprenants.store') }}" method="POST">
+                <form action="{{ route('developpeurs.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
@@ -132,7 +136,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Phone</label>
-                            <input type="numeric" class="form-control" name="phone" required>
+                            <input type="text" class="form-control" name="phone" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Formation</label>
@@ -142,25 +146,26 @@
                             <label class="form-label">Session</label>
                             <input type="text" class="form-control" name="session" required>
                         </div>
+                        
                         <div class="mb-3">
                             <label class="form-label">Tranche1</label>
-                            <input type="text" class="form-control" name="tranche1" id="editTranche1" required>
+                            <input type="text" class="form-control" name="tranche1"  required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Tranche2</label>
-                            <input type="text" class="form-control" name="tranche2" id="editTranche2" required>
+                            <input type="text" class="form-control" name="tranche2"  required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Tranche3</label>
-                            <input type="text" class="form-control" name="tranche3" id="editTranche3" required>
+                            <input type="text" class="form-control" name="tranche3"  required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Tranche4</label>
-                            <input type="text" class="form-control" name="tranche4" id="editTranche4" required>
+                            <input type="text" class="form-control" name="tranche4"  required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Montant</label>
-                            <input type="number" class="form-control" name="montant" required>
+                            <label class="form-label">Montant A PAYER</label>
+                            <input type="text" class="form-control" name="montant" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -173,11 +178,11 @@
     </div>
 
     <!-- Edit Modal -->
- <div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal fade" id="editModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit Apprenant</h5>
+                    <h5 class="modal-title">Edit Employee</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <form id="editForm" method="POST">
@@ -229,8 +234,8 @@
                             <input type="text" class="form-control" name="tranche4" id="editTranche4" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Montant</label>
-                            <input type="numeric" class="form-control" name="montant" id="editMontant" required>
+                            <label class="form-label">Reste A payer</label>
+                            <input type="text" class="form-control" name="montant" id="editMontant" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -241,78 +246,12 @@
             </div>
         </div>
     </div>
-<!-- jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
-    <script src="/DataTables/datatables.js"></script>
-    <!--Datatables -->
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-<script>
-    $(document).ready(function () {
-        var table = $('#example').DataTable({
-            responsive: true,
-            language: {
-                url: 'https://cdn.datatables.net/plug-ins/1.12.0/i18n/fr-FR.json'
-            }
-        }).columns.adjust().responsive.recalc();
-    });
-</script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Edit functionality
-        document.querySelectorAll('.edit-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const id = this.dataset.id;
-                const form = document.getElementById('editForm');
-                form.action = `/apprenants/${id}`;
-                
-                document.getElementById('editName').value = this.dataset.name;
-                document.getElementById('editSurname').value = this.dataset.surname;
-                document.getElementById('editEmail').value = this.dataset.email;
-                document.getElementById('editAddress').value = this.dataset.address;
-                document.getElementById('editPhone').value = this.dataset.phone;
-                document.getElementById('editFormation').value = this.dataset.formation;
-                document.getElementById('editSession').value = this.dataset.session;
-                document.getElementById('editTranche1').value = this.dataset.tranche1;
-                document.getElementById('editTranche2').value = this.dataset.tranche2;
-                document.getElementById('editTranche3').value = this.dataset.tranche3;
-                document.getElementById('editTranche4').value = this.dataset.tranche4;
-                document.getElementById('editMontant').value = this.dataset.montant;
-            });
-        });
+    
 
-        // Select all functionality
-        document.getElementById('selectAll').addEventListener('change', function() {
-            document.querySelectorAll('.employee-checkbox').forEach(checkbox => {
-                checkbox.checked = this.checked;
-            });
-        });
 
-        // Bulk delete
-        document.getElementById('deleteSelected').addEventListener('click', function() {
-            const selectedIds = Array.from(document.querySelectorAll('.employee-checkbox:checked'))
-                .map(checkbox => checkbox.value);
-            
-            if (selectedIds.length === 0) {
-                alert('Please select employees to delete');
-                return;
-            }
-
-            if (confirm('Are you sure you want to delete selected employees?')) {
-                const form = document.createElement('form');
-                form.method = 'POST';
-                form.action = '{{ route("apprenants.destroy", ":id") }}'.replace(':id', selectedIds.join(','));
-                form.innerHTML = `
-                    @csrf
-                    @method('DELETE')
-                    <input type="hidden" name="ids" value="${selectedIds.join(',')}">
-                `;
-                document.body.appendChild(form);
-                form.submit();
-            }
-        });
-    </script>
-
-<!--<script src="{{ asset('js/employee_form.js') }}"></script>-->
+    
+	<x-developper/>
+     
+</body>
+</html>

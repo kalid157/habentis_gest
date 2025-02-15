@@ -45,7 +45,12 @@
                             <th data-priority>Phone</th>
                             <th data-priority>Formation</th>
                             <th data-priority>Session</th>
+                            <th data-priority>Tranche1</th>
+                            <th data-priority>Tranche2</th>
+                            <th data-priority>Tranche3</th>
+                            <th data-priority>Tranche4</th>
                             <th data-priority>Montant</th>
+                            <th data-priority>Reste a Payer</th>
                             <th data-priority>Actions</th>
                         </tr>
                     </thead>
@@ -60,7 +65,12 @@
                             <td>{{ $design->phone }}</td>
                             <td>{{ $design->formation }}</td>
                             <td>{{ $design->session }}</td>
+                            <td>{{ $design->tranche1 }}</td>
+                            <td>{{ $design->tranche2 }}</td>
+                            <td>{{ $design->tranche3 }}</td>
+                            <td>{{ $design->tranche4 }}</td>
                             <td>{{ $design->montant }}</td>
+                            <td>{{ $design->montantrestant }}</td>
                             <td>
                                 <button class="btn btn-sm btn-warning edit-btn" 
                                     data-id="{{ $design->id }}"
@@ -71,7 +81,12 @@
                                     data-phone="{{ $design->phone }}"
                                     data-formation="{{ $design->formation }}"
                                     data-session="{{ $design->session }}"
+                                    data-tranche1="{{ $design->tranche1 }}"
+                                    data-tranche2="{{ $design->tranche2 }}"
+                                    data-tranche3="{{ $design->tranche3 }}"
+                                    data-tranche4="{{ $design->tranche4 }}"
                                     data-montant="{{ $design->montant }}"
+                                    data-montantrestant="{{ $design->montantrestant }}"
                                     data-bs-toggle="modal" 
                                     data-bs-target="#editModal">
                                     <i class="fas fa-edit"> Edit</i>
@@ -130,6 +145,22 @@
                             <input type="text" class="form-control" name="session" required>
                         </div>
                         <div class="mb-3">
+                            <label class="form-label">Tranche1</label>
+                            <input type="text" class="form-control" name="tranche1" id="editTranche1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tranche2</label>
+                            <input type="text" class="form-control" name="tranche2" id="editTranche2" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tranche3</label>
+                            <input type="text" class="form-control" name="tranche3" id="editTranche3" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tranche4</label>
+                            <input type="text" class="form-control" name="tranche4" id="editTranche4" required>
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label">Montant</label>
                             <input type="text" class="form-control" name="montant" required>
                         </div>
@@ -182,6 +213,22 @@
                         <div class="mb-3">
                             <label class="form-label">Session</label>
                             <input type="text" class="form-control" name="session" id="editSession" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tranche1</label>
+                            <input type="text" class="form-control" name="tranche1" id="editTranche1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tranche2</label>
+                            <input type="text" class="form-control" name="tranche2" id="editTranche2" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tranche3</label>
+                            <input type="text" class="form-control" name="tranche3" id="editTranche3" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tranche4</label>
+                            <input type="text" class="form-control" name="tranche4" id="editTranche4" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Montant</label>

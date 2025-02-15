@@ -31,6 +31,10 @@
                 document.getElementById('editPhone').value = this.dataset.phone;
                 document.getElementById('editFormation').value = this.dataset.formation;
                 document.getElementById('editSession').value = this.dataset.session;
+                document.getElementById('editTranche1').value = this.dataset.tranche1;
+                document.getElementById('editTranche2').value = this.dataset.tranche2;
+                document.getElementById('editTranche3').value = this.dataset.tranche3;
+                document.getElementById('editTranche4').value = this.dataset.tranche4;
                 document.getElementById('editMontant').value = this.dataset.montant;
             });
         });

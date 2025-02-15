@@ -5,14 +5,14 @@
       <div class="row">
         <div class="col-sm"> 
       
-        <x-adminlte-small-box title="{{ $totalDev }}" text="User Registrations" icon="fas fa-user-plus text-teal"
+        <x-adminlte-small-box title="{{ $totalDev  }}" text="User Registrations" icon="fas fa-user-plus text-teal"
          
             theme="primary" url="#" url-text="View all users"/>
 
         </div>
 
         <div class="col-sm">
-        <x-adminlte-small-box title="{{$totalMontant}} Fcfa" text="Views" icon="fas fa-eye text-dark"
+        <x-adminlte-small-box title="424" text="Views" icon="fas fa-eye text-dark"
         theme="teal" url="#" url-text="View details"/>
         </div>
 
@@ -22,19 +22,19 @@
         </div>
         
       </div>
-    </div>  
+    </div> 
     
-    
-    <x-header data="APPRENANTS DEVELOPPEUR"/>
-        <div class="card-body">
+    <div class="container-fluid">
+        <div class="card">
 
-        <div class="card-body">
+            <x-header data="APPRENANTS DEVELOPPEUR WEB"/>
+            
+            <div class="card-body">
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
-            
-            
-                <table  id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+
+                <table class="" id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                         <tr>
                             <th data-priority><input type="checkbox" id="selectAll"></th>
@@ -49,8 +49,8 @@
                             <th data-priority>Tranche2</th>
                             <th data-priority>Tranche3</th>
                             <th data-priority>Tranche4</th>
-                            <th data-priority>Montant A Payer</th>
-                            <th data-priority>Reste A Payer</th>
+                            <th data-priority> Montant</th>
+                            <th data-priority> Reste A Payer</th>
                             <th data-priority>Actions</th>
                         </tr>
                     </thead>
@@ -69,10 +69,8 @@
                             <td>{{ $developpeur->tranche2 }}</td>
                             <td>{{ $developpeur->tranche3 }}</td>
                             <td>{{ $developpeur->tranche4 }}</td>
-                            <td>{{ $developpeur->montant }}</td>
-                            <td>{{ $developpeur->montantrestant }}</td> <!-- Montant restant -->
-                            <td>
-                            
+                            <td>{{ $developpeur->montant}}</td>
+                            <td>{{ $developpeur->montantrestant}}</td>
                             <td>
                                 <button class="btn btn-sm btn-warning edit-btn" 
                                     data-id="{{ $developpeur->id }}"
@@ -146,25 +144,24 @@
                             <label class="form-label">Session</label>
                             <input type="text" class="form-control" name="session" required>
                         </div>
-                        
                         <div class="mb-3">
                             <label class="form-label">Tranche1</label>
-                            <input type="text" class="form-control" name="tranche1"  required>
+                            <input type="text" class="form-control" name="tranche1" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Tranche2</label>
-                            <input type="text" class="form-control" name="tranche2"  required>
+                            <input type="text" class="form-control" name="tranche2" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Tranche3</label>
-                            <input type="text" class="form-control" name="tranche3"  required>
+                            <input type="text" class="form-control" name="tranche3" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Tranche4</label>
-                            <input type="text" class="form-control" name="tranche4"  required>
+                            <input type="text" class="form-control" name="tranche4" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Montant A PAYER</label>
+                            <label class="form-label">Montant</label>
                             <input type="text" class="form-control" name="montant" required>
                         </div>
                     </div>
@@ -234,7 +231,7 @@
                             <input type="text" class="form-control" name="tranche4" id="editTranche4" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Reste A payer</label>
+                            <label class="form-label">Montant</label>
                             <input type="text" class="form-control" name="montant" id="editMontant" required>
                         </div>
                     </div>
@@ -246,12 +243,8 @@
             </div>
         </div>
     </div>
-
+    <x-developper/>
     
-
-
-    
-	<x-developper/>
      
 </body>
 </html>
